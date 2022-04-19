@@ -1,0 +1,163 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: sans-serif;
+}
+
+.bloque {
+    /* width: 75%; */
+    width: 85%;
+    margin: 2rem auto;
+    padding: 2rem 2rem;
+    border: 2px solid black;
+
+    font-size: 1.5rem;
+}
+
+h2 {
+    margin-bottom: 1.2rem;
+}
+
+h3 {
+    border-bottom: 1px solid black;
+    /* margin-bottom: 1rem; */
+}
+
+.form {
+    display: grid;
+    row-gap: 0.5rem;
+    column-gap: 2rem;
+}
+
+/* |----||----||----||----||----||----||----|
+                    Paso 1
+|----||----||----||----||----||----||----| */
+
+.form--1 {
+    grid-template-columns: 2.5fr 2.5fr 1fr;
+}
+
+.form__button--paso-1 {
+    grid-row: 1;
+    grid-column: 3;
+}
+
+/* |----||----||----||----||----||----||----|
+                    Paso 2
+|----||----||----||----||----||----||----| */
+
+.clases {
+    display: grid;
+    /* grid-template-columns: repeat(5, 1fr); */
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 2rem;
+    column-gap: 2rem;
+
+    align-items: flex-start;
+}
+
+.clase {
+    border: 1px solid black;
+    padding: 1rem;
+}
+
+.form--numero-objetos {
+    /* border-bottom: 1px solid black; */
+    /* padding-bottom: 1rem; */
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 0.8rem;
+}
+
+.form--numero-objetos > div {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.form__input--numero-objetos {
+    width: 40%;
+}
+
+.form__button--numero-objetos {
+    align-self: end;
+}
+
+/* |----||----||----||----||----||----||----|
+                    Paso 3
+|----||----||----||----||----||----||----| */
+
+.objeto {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0.8rem;
+}
+
+.objeto--variables {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    gap: 0.2rem;
+}
+
+.input--invalido {
+    border: 1px solid red;
+}
+
+/* |----||----||----||----||----||----||----|
+                    Paso 4
+|----||----||----||----||----||----||----| */
+
+.form--numero-nuevo {
+    grid-template-columns: 2fr 1fr;
+}
+
+.form__button--numero-nuevo {
+    grid-row: 1;
+    grid-column: 2;
+}
+
+/* |----||----||----||----||----||----||----|
+                    Paso 5
+|----||----||----||----||----||----||----| */
+.clase-aux {
+    grid-template-columns: 1fr;
+}
+
+.objetos-nuevos {
+    display: grid;
+    padding-top: 1rem;
+    /* gap: 2rem; */
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 2rem;
+}
+
+.align--end {
+    align-self: flex-end;
+}
+
+/* |----||----||----||----||----||----||----|
+                    Paso 6
+|----||----||----||----||----||----||----| */
+.clases--resultado {
+    grid-template-columns: 1fr 1fr;
+}
+
+.clase--resultado {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
