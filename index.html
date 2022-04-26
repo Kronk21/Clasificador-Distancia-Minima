@@ -13,7 +13,7 @@
                             Paso 1
         |----||----||----||----||----||----| |----|-->
         <div class="bloque">
-            <h2>Paso 1</h2>
+            <h2>Ingrese el número de clases y de variables</h2>
             <form class="form form--1">
                 <label for="">Numero de Clases</label>
                 <label for="">Numero de variables</label>
@@ -37,68 +37,36 @@
         |----||----||----||----||----||----| |----|-->
 
         <div class="bloque bloque--2">
-            <h2>Paso 2</h2>
+            <h2>Ingrese el número de objetos que va a tener cada clase</h2>
 
             <div class="clases">
-                <div class="clase">
-                    <h3>Clase 1</h3>
-
-                    <!-- |----||----||----||----||----|
-                        Formulario Numero de Objetos
-                    |----||----||----||----| |----|-->
+                <div class="clase clase--${i}">
+                    <h3>Clase 0</h3>
                     <form class="form--numero-objetos">
                         <div>
                             <label>No. Objetos</label>
                             <input
                                 type="number"
-                                class="form__input--numero-objetos"
+                                class="form__input--numero-objetos form__input--numero-objetos-${i}"
                             />
                         </div>
-                        <button class="form__button--numero-objetos">
-                            Aceptar
-                        </button>
                     </form>
                 </div>
 
-                <div class="clase">
+                <div class="clase clase--${i}">
                     <h3>Clase 1</h3>
-
-                    <!-- |----||----||----||----||----|
-                        Formulario Numero de Objetos
-                    |----||----||----||----| |----|-->
                     <form class="form--numero-objetos">
                         <div>
                             <label>No. Objetos</label>
                             <input
                                 type="number"
-                                class="form__input--numero-objetos"
+                                class="form__input--numero-objetos form__input--numero-objetos-${i}"
                             />
                         </div>
-                        <button class="form__button--numero-objetos">
-                            Aceptar
-                        </button>
                     </form>
                 </div>
 
-                <div class="clase">
-                    <h3>Clase 1</h3>
-
-                    <!-- |----||----||----||----||----|
-                        Formulario Numero de Objetos
-                    |----||----||----||----| |----|-->
-                    <form class="form--numero-objetos">
-                        <div>
-                            <label>No. Objetos</label>
-                            <input
-                                type="number"
-                                class="form__input--numero-objetos"
-                            />
-                        </div>
-                        <button class="form__button--numero-objetos">
-                            Aceptar
-                        </button>
-                    </form>
-                </div>
+                <button class="form__button--numero-objetos">Continuar</button>
             </div>
         </div>
 
@@ -106,7 +74,7 @@
                             Paso 3
         |----||----||----||----||----||----| |----|-->
         <div class="bloque bloque--3">
-            <h2>Paso 3</h2>
+            <h2>Ingrese los objetos en sus respectivas clases</h2>
 
             <div class="clases clases--llenar">
                 <div class="clase">
@@ -171,6 +139,8 @@
                         </form>
                     </div>
                 </div>
+
+                <button class="form__button--enviar-objetos">Continuar</button>
             </div>
         </div>
 
@@ -178,7 +148,7 @@
                             Paso 4
         |----||----||----||----||----||----| |----|-->
         <div class="bloque bloque--4">
-            <h2>Paso 4</h2>
+            <h2>Ingrese el número de nuevos objetos</h2>
 
             <form class="form form--numero-nuevo">
                 <label for="">Numero de Nuevos Objetos</label>
@@ -197,11 +167,11 @@
                             Paso 5
         |----||----||----||----||----||----| |----|-->
         <div class="bloque bloque--5">
-            <h2>Paso 5</h2>
+            <h2>Ingrese los nuevos objetos</h2>
 
             <div class="clases clase-aux">
                 <div class="clase">
-                    <h3>Clase ?</h3>
+                    <h3>Objetos Nuevos</h3>
 
                     <!-- |----||----||----||----||----|
                         Seccion para Llenar Objetos
@@ -225,32 +195,6 @@
                             </div>
                         </form>
 
-                        <form class="objeto objeto-nuevo">
-                            <label>Ob 1</label>
-                            <div class="objeto--variables">
-                                <input type="number" />
-                                <input type="number" />
-                                <input type="number" />
-                            </div>
-                        </form>
-
-                        <form class="objeto objeto-nuevo">
-                            <label>Ob 1</label>
-                            <div class="objeto--variables">
-                                <input type="number" />
-                                <input type="number" />
-                                <input type="number" />
-                            </div>
-                        </form>
-
-                        <form class="objeto objeto-nuevo">
-                            <label>Ob 1</label>
-                            <div class="objeto--variables">
-                                <input type="number" />
-                                <input type="number" />
-                                <input type="number" />
-                            </div>
-                        </form>
                         <button class="align--end">Continuar</button>
                     </div>
                 </div>
@@ -261,7 +205,7 @@
                             Paso 6
         |----||----||----||----||----||----| |----|-->
         <div class="bloque bloque--6">
-            <h2>Paso 6</h2>
+            <h2>Resultados</h2>
 
             <div class="clases clases--resultado">
                 <div class="clase clase--resultado">

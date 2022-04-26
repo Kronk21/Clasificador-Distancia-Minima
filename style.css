@@ -1,3 +1,12 @@
+:root {
+    --back-color: #f1f3f5;
+    --front-color: #fff;
+    --input-border-color: #ced4da;
+    --input-back-color: #f8f9fa;
+
+    --shadow-color: rgba(0, 0, 0, 0.04);
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -10,6 +19,10 @@ html {
 
 body {
     font-family: sans-serif;
+    color: #444;
+
+    /* background-color: #f3f3f3; */
+    background-color: var(--back-color);
 }
 
 .bloque {
@@ -17,19 +30,46 @@ body {
     width: 85%;
     margin: 2rem auto;
     padding: 2rem 2rem;
-    border: 2px solid black;
+    border: 1px solid var(--front-color);
+    border-radius: 10px;
 
     font-size: 1.5rem;
+
+    background-color: var(--front-color);
+    box-shadow: 0 0.8rem 0.8rem var(--shadow-color);
+}
+
+input {
+    border: none;
+    padding: 0.5rem 2rem;
+    font-size: 1.2rem;
+    text-align: center;
+    width: 12rem;
+    border-radius: 10rem;
+    /* margin-right: 1rem; */
+    border: 1px solid var(--input-border-color);
+    background-color: var(--input-back-color);
+    transition: all 0.3s;
+}
+
+button {
+    border: none;
+    border-radius: 5px;
+    padding: 0.5rem 2rem;
+
+    border: 1px solid var(--input-border-color);
+    background-color: var(--input-back-color);
+
+    font-size: 1.2rem;
 }
 
 h2 {
     margin-bottom: 1.2rem;
 }
 
-h3 {
+/* h3 {
     border-bottom: 1px solid black;
-    /* margin-bottom: 1rem; */
-}
+} */
 
 .form {
     display: grid;
@@ -65,8 +105,11 @@ h3 {
 }
 
 .clase {
-    border: 1px solid black;
+    border: 1px solid var(--input-border-color);
+    border-radius: 5px;
     padding: 1rem;
+
+    /* box-shadow: 0 0.8rem 0.8rem rgba(0, 0, 0, 0.02); */
 }
 
 .form--numero-objetos {
@@ -77,6 +120,7 @@ h3 {
     flex-direction: column;
 
     padding: 0.8rem;
+    padding-bottom: 0;
 }
 
 .form--numero-objetos > div {
@@ -109,12 +153,8 @@ h3 {
 .objeto--variables {
     display: flex;
     flex-direction: column;
-    width: 50%;
+    /* width: 50%; */
     gap: 0.2rem;
-}
-
-.input--invalido {
-    border: 1px solid red;
 }
 
 /* |----||----||----||----||----||----||----|
@@ -143,6 +183,17 @@ h3 {
     /* gap: 2rem; */
     grid-template-columns: repeat(3, 1fr);
     column-gap: 2rem;
+    row-gap: 2rem;
+}
+
+.objeto-nuevo {
+    /* border: 1px solid var(--input-border-color);
+    border-radius: 5px; */
+
+    display: flex;
+    justify-content: space-between;
+
+    padding: 1rem;
 }
 
 .align--end {

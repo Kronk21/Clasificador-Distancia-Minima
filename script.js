@@ -1,5 +1,8 @@
 "use strict";
 
+let colorArray = ["#FF6633", "#FFFF99", "#00B3E6", "#E6B333"];
+let cl = 0;
+
 const botonPaso1 = document.querySelector(".form__button--paso-1");
 const inputNumeroClases = document.querySelector(
     ".form__input--numero-de-clases"
@@ -291,6 +294,15 @@ const llenarNuevosObjetos = function (numeroDeObjetos, numeroVariables) {
         `<button class="form__button--enviar-nuevos align--end">Continuar</button>
         </div>`;
 
+    // const arrObjetosNuevos = document.querySelectorAll(".objeto-nuevo");
+    // // console.log(arrObjetosNuevos);
+    // arrObjetosNuevos.forEach((el) => {
+    //     el.style["border"] = `1px solid ${colorArray[cl]}`;
+    //     cl++;
+
+    //     if (cl >= colorArray.length) cl = 0;
+    // });
+
     document
         .querySelector(".form__button--enviar-nuevos")
         .addEventListener("click", function (e) {
@@ -389,18 +401,21 @@ const mostrarResultados = function (resultados) {
         <div class="clase clase--resultado">
             <h3>Clase ${i}</h3>
 
-            <h4>&horbar; Promedio de la clase:</h4>
-            <p>[${resultados[i].promedio.join(", ")}]</p>
-
             <h4>&horbar; Objetos:</h4>
             <p>${resultados[i].objetos
                 .map((ob) => `[${ob.join(", ")}]`)
                 .join(", ")}</p>
 
             <h4>&horbar; Objetos Nuevos:</h4>
-            <p>${resultados[i].objetosNuevos
+            <h3>${resultados[i].objetosNuevos
                 .map((ob) => `[${ob.join(", ")}]`)
-                .join(", ")}</p>
+                .join(", ")}</h3>
+            
+
+            <h4>&horbar; Promedio de la clase:</h4>
+            <p>[${resultados[i].promedio
+                .map((n) => n.toFixed(2))
+                .join(", ")}]</p>
         </div>`;
 
         divResultados.insertAdjacentHTML("beforeend", html);
