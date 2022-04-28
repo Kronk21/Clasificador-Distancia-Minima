@@ -1,7 +1,15 @@
 "use strict";
 
-let colorArray = ["#FF6633", "#FFFF99", "#00B3E6", "#E6B333"];
-let cl = 0;
+const btnInfo = document.querySelector(".boton-info");
+const modal = document.querySelector(".modal");
+
+btnInfo.addEventListener("mouseover", function (e) {
+    modal.classList.remove("hide");
+});
+
+btnInfo.addEventListener("mouseout", function () {
+    modal.classList.add("hide");
+});
 
 const botonPaso1 = document.querySelector(".form__button--paso-1");
 const inputNumeroClases = document.querySelector(
@@ -145,7 +153,7 @@ const formularioLlenarObjetos = function (objetosPorClase, numeroVariables) {
 
             htmlObjeto += `
                 <form class="objeto">
-                    <label>Ob ${indiceObjeto}</label>
+                    <label>Ob. ${indiceObjeto}</label>
                     <div class="objeto--variables">
                         ${htmlFormLlenar}
                     </div>
@@ -281,7 +289,7 @@ const llenarNuevosObjetos = function (numeroDeObjetos, numeroVariables) {
 
         html += `
             <form class="objeto objeto-nuevo">
-                <label>Ob ${indiceObjetoAux}</label>
+                <label>Ob. ${indiceObjetoAux}</label>
                 <div class="objeto--variables">
                     ${htmlFormLlenar}
                 </div>
@@ -397,31 +405,52 @@ const mostrarResultados = function (resultados) {
     // console.log(divResultados);
 
     for (let i = 0; i < resultados.length; i++) {
+        // console.log(resultados[i]);
+        let distanciasEscuclideas = ``;
+        resultados[i].objetosNuevos.forEach((ob) => {
+            distanciasEscuclideas += `<h3>[${ob.join(", ")}]</h3>`;
+            resultados.forEach((res) => {
+                distanciasEscuclideas += `<p>Distancia con la clase ${
+                    res.clase
+                }: ${
+                    res.clase === i
+                        ? `<span>${distanciaEuclidea(ob, res.promedio).toFixed(
+                              2
+                          )}</span>, por lo tanto, el objeto [${ob.join(
+                              ", "
+                          )}] pertenece a la clase ${i}`
+                        : distanciaEuclidea(ob, res.promedio).toFixed(2)
+                }</p>`;
+            });
+        });
+        // console.log(distanciasEscuclideas);
+
         const html = `
         <div class="clase clase--resultado">
-            <h3>Clase ${i}</h3>
+            <h2>Clase ${i}</h2>
 
             <h4>&horbar; Objetos:</h4>
             <p>${resultados[i].objetos
                 .map((ob) => `[${ob.join(", ")}]`)
                 .join(", ")}</p>
 
-            <h4>&horbar; Objetos Nuevos:</h4>
-            <h3>${resultados[i].objetosNuevos
-                .map((ob) => `[${ob.join(", ")}]`)
-                .join(", ")}</h3>
-            
-
             <h4>&horbar; Promedio de la clase:</h4>
             <p>[${resultados[i].promedio
                 .map((n) => n.toFixed(2))
                 .join(", ")}]</p>
+
+            <h4>&horbar; Objetos Nuevos:</h4>
+            ${distanciasEscuclideas}
         </div>`;
 
         divResultados.insertAdjacentHTML("beforeend", html);
     }
 };
 
+/*
+            <h3>${resultados[i].objetosNuevos
+                .map((ob) => `[${ob.join(", ")}]`)
+                .join(", ")}</h3>
 /*
 const formularioLlenarObjetos = function (index, numeroVariables) {
     // console.log(index);

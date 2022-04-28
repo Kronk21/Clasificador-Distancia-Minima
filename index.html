@@ -5,10 +5,45 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Distancia Minima</title>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Rubik&display=swap"
+            rel="stylesheet"
+        />
         <link rel="stylesheet" href="style.css" />
     </head>
 
     <body>
+        <button class="boton-info">
+            <ion-icon name="help-circle-outline"></ion-icon>
+        </button>
+        <div class="modal hide">
+            <h1>Clasificador de Distancia Minima</h1>
+            <h2>Reconocimiento de Patrones</h2>
+
+            <div>
+                <div>
+                    <!-- <ion-icon name="school-outline"></ion-icon> -->
+                    <ion-icon name="people-outline"></ion-icon>
+                    <h3>Integrantes:</h3>
+                </div>
+                <p>Arteaga Araiza Luis Antonio</p>
+                <p>Rubio Franco Alejandro</p>
+                <p>Serrano Rodríguez Cesar Axel</p>
+            </div>
+
+            <div>
+                <div>
+                    <!-- <ion-icon name="person-circle-outline"></ion-icon> -->
+                    <ion-icon name="person-outline"></ion-icon>
+                    <h3>Catedratica:</h3>
+                </div>
+                <p>Edrein Marcela Aguilar Ramirez</p>
+            </div>
+        </div>
+
         <!-- |----||----||----||----||----||----||----|
                             Paso 1
         |----||----||----||----||----||----| |----|-->
@@ -218,10 +253,25 @@
                     <p>[1, 3], [2, 2], [3, 3], [2, 4], [3, 4]</p>
 
                     <h4>&horbar; Objetos Nuevos:</h4>
-                    <p>[2, 4], [3, 4]</p>
+                    <h3>[5,6]</h3>
+                    <p>
+                        Distancia con la clase 0:
+                        <span>1.33</span>, por lo tanto, el objeto [5,6]
+                        pertenece a la clase 0
+                    </p>
+                    <p>Distancia con la clase 0: 1.95</p>
                 </div>
             </div>
         </div>
+
+        <script
+            type="module"
+            src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+        ></script>
+        <script
+            nomodule
+            src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+        ></script>
 
         <script src="script.js"></script>
     </body>
