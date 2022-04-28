@@ -252,14 +252,33 @@ span {
     align-items: center;
 }
 
-button:hover {
+a {
+    border-radius: 10rem;
+    padding: 0.4rem;
+    border: 1px solid var(--input-border-color);
+    background-color: var(--input-back-color);
+
+    position: absolute;
+    top: 5rem;
+    right: 2rem;
+
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    transition: 0.1s ease-in all;
+}
+
+button:hover,
+a:hover {
     background-color: var(--main-color);
     color: var(--input-back-color);
 
     /* border: none; */
 }
 
-button:hover > * {
+button:hover > *,
+a:hover > * {
     color: var(--input-back-color);
 }
 
