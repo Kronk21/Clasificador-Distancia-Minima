@@ -3,6 +3,37 @@
 const btnInfo = document.querySelector(".boton-info");
 const modal = document.querySelector(".modal");
 
+const colores = [
+    {
+        v1: "#ffa8a8",
+        v2: "#c92a2a",
+    },
+    {
+        v1: "#b2f2bb",
+        v2: "#2b8a3e",
+    },
+    {
+        v1: "#ffec99",
+        v2: "#e67700",
+    },
+    {
+        v1: "#a5d8ff",
+        v2: "#1864ab",
+    },
+    {
+        v1: "#e599f7",
+        v2: "#862e9c",
+    },
+    {
+        v1: "#fcc2d7",
+        v2: "#a61e4d",
+    },
+    {
+        v1: "#e9ecef",
+        v2: "#212529",
+    },
+];
+
 btnInfo.addEventListener("mouseover", function (e) {
     modal.classList.remove("hide");
 });
@@ -35,7 +66,11 @@ divPaso5.style.opacity = 0;
 const divPaso6 = document.querySelector(".bloque--6");
 divPaso6.style.opacity = 0;
 
+const canvas = document.querySelector(".grafica");
+canvas.style.opacity = 0;
+
 let clases = [];
+let numVar;
 
 botonPaso1.addEventListener("click", function (e) {
     e.preventDefault();
@@ -54,6 +89,8 @@ botonPaso1.addEventListener("click", function (e) {
         divPaso4.style.opacity = 0;
         divPaso5.style.opacity = 0;
         divPaso6.style.opacity = 0;
+        canvas.style.opacity = 0;
+        numVar = numeroVariables;
         mostrarPaso2(numeroClases, numeroVariables);
     } else {
         divPaso2.style.opacity = 0;
@@ -188,6 +225,7 @@ const formularioLlenarObjetos = function (objetosPorClase, numeroVariables) {
     divPaso4.style.opacity = 0;
     divPaso5.style.opacity = 0;
     divPaso6.style.opacity = 0;
+    canvas.style.opacity = 0;
 };
 
 const llenarObjetoClases = function (numeroVariables) {
@@ -248,6 +286,7 @@ const llenarObjetoClases = function (numeroVariables) {
     divPaso4.style.opacity = 1;
     divPaso5.style.opacity = 0;
     divPaso6.style.opacity = 0;
+    canvas.style.opacity = 0;
 
     document
         .querySelector(".form__button--numero-nuevo")
@@ -271,6 +310,7 @@ const llenarObjetoClases = function (numeroVariables) {
 
 const llenarNuevosObjetos = function (numeroDeObjetos, numeroVariables) {
     divPaso6.style.opacity = 0;
+    canvas.style.opacity = 0;
     // console.log(numeroDeObjetos);
     let indiceObjetoAux = indiceObjeto;
 
@@ -427,7 +467,7 @@ const mostrarResultados = function (resultados) {
 
         const html = `
         <div class="clase clase--resultado">
-            <h2>Clase ${i}</h2>
+            <h2><span class="span-clase">Clase ${i}</span></h2>
 
             <h4>&horbar; Objetos:</h4>
             <p>${resultados[i].objetos
@@ -445,6 +485,115 @@ const mostrarResultados = function (resultados) {
 
         divResultados.insertAdjacentHTML("beforeend", html);
     }
+
+    let color = 0;
+    const titulosClases = document.querySelectorAll(".span-clase");
+    titulosClases.forEach((titulo) => {
+        // console.log(titulo);
+        if (color >= colores.length) {
+            color = 0;
+        }
+
+        titulo.style[
+            "background-image"
+        ] = `linear-gradient(to top left, ${colores[color].v1}, ${colores[color].v2})`;
+
+        color++;
+    });
+
+    if (numVar === 2) {
+        graficarResultados(resultados);
+    }
+};
+
+const graficarResultados = function (resultados) {
+    canvas.style.opacity = 1;
+
+    const arrXMayor = [];
+    const arrYMayor = [];
+    resultados.forEach((clase) => {
+        clase.objetos.forEach((ob) => {
+            arrXMayor.push(ob[0]);
+            arrYMayor.push(ob[1]);
+        });
+        clase.objetosNuevos.forEach((ob) => {
+            arrXMayor.push(ob[0]);
+            arrYMayor.push(ob[1]);
+        });
+    });
+    // console.log(arrXMayor);
+    // console.log(arrYMayor);
+
+    const XMayor = arrXMayor.reduce(
+        (mayor, n) => (n > mayor ? n : mayor),
+        arrXMayor[0]
+    );
+    // console.log(XMayor);
+
+    const YMayor = arrYMayor.reduce(
+        (mayor, n) => (n > mayor ? n : mayor),
+        arrYMayor[0]
+    );
+    // console.log(YMayor);
+
+    //  Redimensionar el canvas
+    canvas.setAttribute("width", `${XMayor * 25 + 25}px`);
+    canvas.setAttribute("height", `${YMayor * 25 + 25}px`);
+
+    const ctx = canvas.getContext("2d");
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    ctx.fillStyle = "#e9ecef";
+    for (let i = 0; i < XMayor + 1; i++) {
+        ctx.fillRect(25 * i, 0, 1, canvas.height);
+    }
+
+    for (let i = 0; i < YMayor + 1; i++) {
+        ctx.fillRect(0, 25 * i, canvas.width, 1);
+    }
+
+    ctx.fillStyle = "#495057";
+
+    ctx.arc(0, 0, 7, 0, Math.PI * 2, true);
+    ctx.fill();
+    // console.log(resultados);
+
+    let color = 0;
+    resultados.forEach((clase) => {
+        if (color >= colores.length) {
+            color = 0;
+        }
+
+        const radio = 7;
+        const angInicio = 0;
+        const angFinal = Math.PI * 2;
+        // console.log(clase);
+        ctx.fillStyle = colores[color].v1;
+        clase.objetos.forEach((ob, i) => {
+            ctx.beginPath();
+            const x = 25 * ob[0];
+            const y = 25 * ob[1];
+
+            ctx.arc(x, y, radio, angInicio, angFinal, true);
+            ctx.fill();
+            // ctx.stroke();
+            // console.log(ob, i);
+        });
+
+        ctx.fillStyle = colores[color].v2;
+        clase.objetosNuevos.forEach((ob, i) => {
+            ctx.beginPath();
+            const x = 25 * ob[0];
+            const y = 25 * ob[1];
+
+            ctx.arc(x, y, radio, angInicio, angFinal, true);
+            ctx.fill();
+            // ctx.stroke();
+            // console.log(ob, i);
+        });
+
+        color++;
+    });
 };
 
 /*

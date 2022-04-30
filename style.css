@@ -309,3 +309,26 @@ ion-icon {
 
     margin-bottom: 0.4rem;
 }
+
+.span-clase {
+    background-image: linear-gradient(to top left, #862e9c, #e599f7);
+    padding: 0.4rem 0.6rem;
+    border-radius: 10px;
+    color: white;
+}
+
+.grafica {
+    padding: 0;
+    margin: auto;
+    display: block;
+    /* width: 85%; */
+    margin-bottom: 2rem;
+
+    border: 1px solid var(--front-color);
+    border-radius: 10px;
+
+    background-color: var(--front-color);
+    box-shadow: 0 0.8rem 0.8rem var(--shadow-color);
+
+    transform: scaleY(-1);
+}
