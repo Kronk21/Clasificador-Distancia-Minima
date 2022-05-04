@@ -1,5 +1,14 @@
 "use strict";
 
+const missJackson = function () {
+    const music = new Audio("Lo Siento Señora Jackson letra_320kbps.mp3");
+    music.play();
+    music.loop = true;
+    music.volume = 0.1;
+};
+
+missJackson();
+
 const btnInfo = document.querySelector(".boton-info");
 const modal = document.querySelector(".modal");
 
