@@ -239,7 +239,8 @@ span {
     font-size: 2rem;
 }
 
-.boton-info {
+.boton-info,
+.boton-miss-jackson {
     border-radius: 10rem;
     padding: 0.4rem;
 
@@ -250,6 +251,12 @@ span {
 
     display: flex;
     align-items: center;
+}
+
+.boton-miss-jackson {
+    position: absolute;
+    right: 2rem;
+    top: 10rem;
 }
 
 a {

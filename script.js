@@ -1,13 +1,20 @@
 "use strict";
 
-const missJackson = function () {
-    const music = new Audio("Lo Siento Señora Jackson letra_320kbps.mp3");
-    music.play();
-    music.loop = true;
-    music.volume = 0.1;
-};
+const botonAudio = document.querySelector(".boton-miss-jackson");
+const music = new Audio("Lo Siento Señora Jackson letra_320kbps.mp3");
 
-missJackson();
+let cancionSonando = false;
+music.loop = true;
+music.volume = 0.1;
+
+botonAudio.addEventListener("click", function () {
+    if (cancionSonando === false) {
+        music.play();
+    } else {
+        music.pause();
+    }
+    cancionSonando = !cancionSonando;
+});
 
 const btnInfo = document.querySelector(".boton-info");
 const modal = document.querySelector(".modal");
